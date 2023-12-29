@@ -37,11 +37,7 @@ const extensionConfig = {
             loader: 'ts-loader'
           }
         ]
-      },
-      {
-        test: /\.svg$/,
-        use: 'file-loader',
-      },
+      }
     ]
   },
   devtool: 'nosources-source-map',

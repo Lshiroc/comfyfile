@@ -3,8 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as jimp from 'jimp';
 import { showQuickPick } from './quickOpen';
-import * as imageConversion from 'image-conversion';
-import { createCanvas, loadImage } from 'canvas';
+import * as svgToImg from '@nodepit/svg-to-img';
 
 export function activate(context: vscode.ExtensionContext) {
 	let disposable = vscode.commands.registerCommand('convertor.convertTo', async (cont) => {
@@ -36,21 +35,26 @@ export function activate(context: vscode.ExtensionContext) {
 					filename = filename[0] + fileExtension;
 					let destination: string = myPathArr.join("\\\\") + "\\\\" + filename;
 					if(sourceFileExt === "svg") {
-						// console.log('c:/Users/Zeynal/Desktop/projects/STEAM SAF Hackathon 2023/questify/src/assets/images/featuresIcon2.svg')
-						// const canvas = createCanvas(1, 1);
-						// const image = loadImage("c:/Users/Zeynal/Desktop/projects/STEAM SAF Hackathon 2023/questify/src/assets/images/map3.png");
-						// (await image).onload = async () => {
-							// canvas.width = (await image).width;
-							// canvas.height = (await image).height;
-						// 
-							// const ctx = canvas.getContext('2d');
-							// ctx.drawImage(await image, 0, 0);
-						// 
-							// const width = (await image).width;
-							// const height = (await image).height;
-							// console.log(width, height);
-						// }
-
+						const svgBuffer = fs.readFileSync(myPath);
+						if(fileExtension === ".png") {
+							(async () => {
+								await svgToImg.from(svgBuffer).toPng({
+									path: destination
+								});
+							})();
+						} else if(fileExtension === ".jpeg") {
+							(async () => {
+								await svgToImg.from(svgBuffer).toJpeg({
+									path: destination
+								});
+							})();
+						} else if(fileExtension === ".webp") {
+							(async () => {
+								await svgToImg.from(svgBuffer).toWebp({
+									path: destination
+								});
+							})();
+						}
 					} else {
 						jimp.default.read(myPath, (err, image) => {
 							if(err) {

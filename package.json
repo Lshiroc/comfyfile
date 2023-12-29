@@ -53,11 +53,10 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
-    "canvas": "^2.11.2",
-    "file-loader": "^6.2.0",
+    "@nodepit/svg-to-img": "^3.1.0",
     "fs": "^0.0.1-security",
-    "image-conversion": "^2.1.1",
     "jimp": "^0.22.10",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "puppeteer": "^21.6.1"
   }
 }

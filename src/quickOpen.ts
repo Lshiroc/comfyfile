@@ -4,13 +4,15 @@ export async function showQuickPick(context: vscode.ExtensionContext,  exception
     console.log(exceptionExt);
     let i = 0;
     let fileOptions: string[] = [".png", ".jpeg", ".bmp", ".tiff", ".gif"];
+    let fileOptionsSvg: string[] = [".png", ".jpeg", ".webp"];
+
     fileOptions = fileOptions.filter((fileExt) => {
         if(fileExt !== exceptionExt) {
             return fileExt;
         }
     });
-    console.log(fileOptions);
-    const result = await vscode.window.showQuickPick(fileOptions, {
+    
+    const result = await vscode.window.showQuickPick(exceptionExt === ".svg" ? fileOptionsSvg : fileOptions, {
         placeHolder: "enter something",
         onDidSelectItem: item => vscode.window.showInformationMessage(`Focus: ${++i}: ${item}`)
     });
