@@ -14,10 +14,18 @@
   "contributes": {
     "commands": [
       {
-        "command": "convertor.helloWorld",
-        "title": "Hello World"
+        "command": "convertor.convertTo",
+        "title": "Convert to"
       }
-    ]
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "group": "Convertor",
+          "command": "convertor.convertTo"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
@@ -45,7 +53,10 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "canvas": "^2.11.2",
+    "file-loader": "^6.2.0",
     "fs": "^0.0.1-security",
+    "image-conversion": "^2.1.1",
     "jimp": "^0.22.10",
     "path": "^0.12.7"
   }
