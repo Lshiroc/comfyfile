@@ -8,6 +8,18 @@ import * as svgToImg from '@nodepit/svg-to-img';
 export function activate(context: vscode.ExtensionContext) {
 	let disposable = vscode.commands.registerCommand('convertor.convertTo', async (cont) => {
 		try {
+			let myPath: string;
+			if(!Object.hasOwn(cont || {}, "path")) {
+				let selectedFile: vscode.Uri[] | undefined = await vscode.window.showOpenDialog({
+					canSelectFiles: true,
+				});
+				
+				if(selectedFile === undefined) return;
+				myPath = selectedFile[0].fsPath;
+			} else {
+				myPath = path.normalize(cont.path);
+			}
+
 			const options: { [key: string]: (context: vscode.ExtensionContext, exceptionExt: string) => Promise<string>} = {
 				"Convert the Image": showQuickPick
 			};
@@ -16,12 +28,11 @@ export function activate(context: vscode.ExtensionContext) {
 			quickPick.onDidChangeSelection(async selection => {
 				console.log(`selection: ${JSON.stringify(selection)}`);
 				if(selection[0]) {
-					
 					// Prettifiying path of file
-					let myPath: string = path.normalize(cont.path);
-					myPath = myPath.replace('\\', "");
+					myPath = myPath.replace('\\c', "c");
 					myPath = myPath.replace(/\\/g, "\\\\");
-					
+					console.log("myPath", myPath);
+
 					let myPathArr: string[] = myPath.split('\\\\');
 					let filename: string[] | string = myPathArr!.pop()!.split(".");
 					
