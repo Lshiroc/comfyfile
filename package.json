@@ -2,8 +2,13 @@
   "name": "comfyfile",
   "displayName": "ComfyFile",
   "publisher": "ZeynalMardanli",
+  "icon": "./assets/images/comfyfile-logo.png",
   "description": "An extension for comfortably converting files without leaving your vscode",
-  "version": "0.0.1",
+  "version": "0.0.4",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lshiroc/comfyfile.git"
+  }, 
   "engines": {
     "vscode": "^1.85.0"
   },
