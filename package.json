@@ -1,6 +1,7 @@
 {
   "name": "comfyfile",
   "displayName": "ComfyFile",
+  "publisher": "ZeynalMardanli",
   "description": "An extension for comfortably converting files without leaving your vscode",
   "version": "0.0.1",
   "engines": {
