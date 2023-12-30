@@ -1,7 +1,6 @@
 import * as vscode from 'vscode';
 
 export async function showQuickPick(context: vscode.ExtensionContext,  exceptionExt: string): Promise<string> {
-    console.log(exceptionExt);
     let i = 0;
     let fileOptions: string[] = [".png", ".jpeg", ".bmp", ".tiff", ".gif"];
     let fileOptionsSvg: string[] = [".png", ".jpeg", ".webp"];

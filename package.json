@@ -1,7 +1,7 @@
 {
-  "name": "convertor",
-  "displayName": "convertor",
-  "description": "An extension for converting files",
+  "name": "comfyfile",
+  "displayName": "ComfyFile",
+  "description": "An extension for comfortably converting files without leaving your vscode",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.85.0"
@@ -14,15 +14,15 @@
   "contributes": {
     "commands": [
       {
-        "command": "convertor.convertTo",
-        "title": "Convert to"
+        "command": "comfyfile.convertImage",
+        "title": "ComfyFile: Convert Image"
       }
     ],
     "menus": {
       "explorer/context": [
         {
-          "group": "Convertor",
-          "command": "convertor.convertTo"
+          "group": "ComfyFile",
+          "command": "comfyfile.convertImage"
         }
       ]
     }

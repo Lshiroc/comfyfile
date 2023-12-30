@@ -6,7 +6,7 @@ import { showQuickPick } from './quickOpen';
 import * as svgToImg from '@nodepit/svg-to-img';
 
 export function activate(context: vscode.ExtensionContext) {
-	let disposable = vscode.commands.registerCommand('convertor.convertTo', async (cont) => {
+	let disposable = vscode.commands.registerCommand('comfyfile.convertImage', async (cont) => {
 		try {
 			let myPath: string;
 			if(!Object.hasOwn(cont || {}, "path")) {
@@ -26,12 +26,10 @@ export function activate(context: vscode.ExtensionContext) {
 			const quickPick = vscode.window.createQuickPick();
 			quickPick.items = Object.keys(options).map(label => ({ label }));
 			quickPick.onDidChangeSelection(async selection => {
-				console.log(`selection: ${JSON.stringify(selection)}`);
 				if(selection[0]) {
 					// Prettifiying path of file
 					myPath = myPath.replace('\\c', "c");
 					myPath = myPath.replace(/\\/g, "\\\\");
-					console.log("myPath", myPath);
 
 					let myPathArr: string[] = myPath.split('\\\\');
 					let filename: string[] | string = myPathArr!.pop()!.split(".");
