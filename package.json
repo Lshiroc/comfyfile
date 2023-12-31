@@ -3,7 +3,7 @@
   "displayName": "ComfyFile",
   "publisher": "ZeynalMardanli",
   "icon": "./assets/images/comfyfile-logo.png",
-  "description": "An extension for comfortably converting files without leaving your vscode",
+  "description": "An extension to comfortably convert files without leaving your VSCode comfort zone.",
   "version": "0.0.4",
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "menus": {
       "explorer/context": [
         {
+          "when": "resourceExtname == .jpeg || resourceExtname == .png || resourceExtname == .svg || resourceExtname == .gif || resourceExtname == .webp || resourceExtname == .tiff || resourceExtname == .bmp",
           "group": "ComfyFile",
           "command": "comfyfile.convertImage"
         }

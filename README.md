@@ -10,7 +10,8 @@ ComfyFile currently supports conversions between:
  - webp
  - tiff
  - gif
-
+ - bmp
+ 
 > Note: Planning to add support for other type of files as well in the future.
 
 ## How to Use It?
